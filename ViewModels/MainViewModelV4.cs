@@ -100,7 +100,7 @@ namespace P04WeatherForecastAPI.Client.ViewModels
 
         [RelayCommand]
         public void AddToFavorites() {
-            _favoriteCityService.AddFavoriteCity(new FavoriteCity() { Name = _selectedCity.LocalizedName });
+            _favoriteCityService.AddFavoriteCity(new FavoriteCity() { Name = SelectedCity.LocalizedName });
         }
     }
 }

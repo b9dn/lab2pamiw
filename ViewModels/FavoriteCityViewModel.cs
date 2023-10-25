@@ -20,24 +20,21 @@ namespace P04WeatherForecastAPI.Client.ViewModels
 
 
         private FavoriteCity _selectedCity;
-        public FavoriteCity SelectedCity {
-            get => _selectedCity;
-            set {
-                _selectedCity = value;
-                OnPropertyChanged();
-            }
-        }
 
 
         public FavoriteCityViewModel(IFavoriteCityService favoriteCityService)
         {
             _favoriteCityService = favoriteCityService;
             FavoriteCities = new ObservableCollection<FavoriteCity>();
-            //FavoriteCities.Add(new FavoriteCity { Name = "Koszalin" } );
-            //FavoriteCities.Add(new FavoriteCity { Name = "Gdansk" });
             foreach (FavoriteCity city in _favoriteCityService.GetAllFavoriteCities()) {
                 FavoriteCities.Add(city);
             }
+        }
+
+        [RelayCommand]
+        public void ClearFavoriteCities() {
+            FavoriteCities.Clear();
+            _favoriteCityService.RemoveAll();
         }
 
         [RelayCommand]
@@ -45,7 +42,6 @@ namespace P04WeatherForecastAPI.Client.ViewModels
             FavoriteCity toRemove = new FavoriteCity { Name = Name };
             FavoriteCities.Remove(toRemove);
             _favoriteCityService.RemoveFavoriteCity(Name);
-            OnPropertyChanged();
         }
 
     }

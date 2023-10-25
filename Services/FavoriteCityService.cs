@@ -24,6 +24,11 @@ namespace P04WeatherForecastAPI.Client.Services
                 _favoriteCities.Add(city);
             }
         }
+
+        public void RemoveAll() {
+            _favoriteCities.Clear();
+        }
+
         public void RemoveFavoriteCity(String Name) {
             var cityToRemove = _favoriteCities.SingleOrDefault(city => city.Name == Name);
             if (cityToRemove != null) {

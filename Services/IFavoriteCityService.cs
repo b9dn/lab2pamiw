@@ -12,6 +12,7 @@ namespace P04WeatherForecastAPI.Client.Services
         public List<FavoriteCity> GetAllFavoriteCities();
 
         public void AddFavoriteCity(FavoriteCity city);
+        public void RemoveAll();
         public void RemoveFavoriteCity(String Name);
 
 
